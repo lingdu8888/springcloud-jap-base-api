@@ -23,7 +23,7 @@ public class UserInfoController implements UserInfoApiService {
         return userInfoApiService.get(id);
     }
 
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail/{userId}", method = RequestMethod.GET)
     public UserInfoResponse getUserInfo(String userId) {
         return userInfoApiService.getUserInfo(userId);
     }
@@ -43,17 +43,17 @@ public class UserInfoController implements UserInfoApiService {
         return userInfoApiService.findOne(apiRequest);
     }
 
-    @RequestMapping(value = "/user/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
     public List<UserInfoResponse> findAll(ApiRequest apiRequest) {
         return userInfoApiService.findAll(apiRequest);
     }
 
-    @RequestMapping(value = "/user/list/page", method = RequestMethod.POST)
+    @RequestMapping(value = "/list/page", method = RequestMethod.POST)
     public ApiResponse<UserInfoResponse> findAll(ApiRequestBody requestBody) {
         return userInfoApiService.findAll(requestBody);
     }
 
-    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<UserInfoResponse> findAll() {
         return userInfoApiService.findAll();
     }
