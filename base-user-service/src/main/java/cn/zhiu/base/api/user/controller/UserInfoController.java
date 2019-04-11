@@ -12,7 +12,7 @@ public class UserInfoController  {
     @Autowired
     private UserInfoApiService userInfoApiService;
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     protected UserInfo get(@PathVariable("id") String id) {
         return userInfoApiService.get(id);
     }
