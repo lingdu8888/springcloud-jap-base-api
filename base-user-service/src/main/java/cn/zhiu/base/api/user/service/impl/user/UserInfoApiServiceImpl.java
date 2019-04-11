@@ -1,6 +1,7 @@
 package cn.zhiu.base.api.user.service.impl.user;
 
 import cn.zhiu.base.api.user.bean.user.UserInfo;
+import cn.zhiu.base.api.user.bean.user.UserInfoResponse;
 import cn.zhiu.base.api.user.dao.user.UserInfoDao;
 import cn.zhiu.base.api.user.service.user.UserInfoApiService;
 import cn.zhiu.bean.user.entity.user.UserInfoEntity;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +32,16 @@ public class UserInfoApiServiceImpl extends AbstractBaseApiServiceImpl implement
     }
 
     @Override
+    public UserInfoResponse getUserInfo(String userId) {
+
+        return BeanMapping.map(userInfoDao.getOne(userId), UserInfoResponse.class);
+    }
+
+    @Override
     public UserInfo save(UserInfo model) {
 
         UserInfoEntity entity = BeanMapping.map(model, UserInfoEntity.class);
-
         entity = userInfoDao.save(entity);
-
         return BeanMapping.map(entity, UserInfo.class);
     }
 
@@ -46,28 +52,37 @@ public class UserInfoApiServiceImpl extends AbstractBaseApiServiceImpl implement
     }
 
     @Override
-    public List<UserInfo> findAll(ApiRequest apiRequest) {
-        List<UserInfo> resultList = new ArrayList<>();
+    public UserInfo findOne(ApiRequest apiRequest) {
+        List<UserInfoEntity> result = userInfoDao.findAll(convertSpecification(apiRequest));
+        if (!CollectionUtils.isEmpty(result)) {
+            return BeanMapping.map(result.get(0), UserInfo.class);
+        }
+        return null;
+    }
+
+    @Override
+    public List<UserInfoResponse> findAll(ApiRequest apiRequest) {
+        List<UserInfoResponse> resultList = new ArrayList<>();
 
         List<UserInfoEntity> result = userInfoDao.findAll(convertSpecification(apiRequest));
-        BeanMapping.map(result, resultList, UserInfo.class);
+        BeanMapping.map(result, resultList, UserInfoResponse.class);
 
         return resultList;
     }
 
     @Override
-    public ApiResponse<UserInfo> findAll(ApiRequestBody requestBody) {
+    public ApiResponse<UserInfoResponse> findAll(ApiRequestBody requestBody) {
 
         Page<UserInfoEntity> page = userInfoDao.findAll(convertSpecification(requestBody.getRequest()), convertPageable(requestBody.getRequestPage()));
 
-        return convertApiResponse(page, UserInfo.class);
+        return convertApiResponse(page, UserInfoResponse.class);
     }
 
     @Override
-    public List<UserInfo> findAll() {
-        List<UserInfo> resultList = new ArrayList<>();
+    public List<UserInfoResponse> findAll() {
+        List<UserInfoResponse> resultList = new ArrayList<>();
         List<UserInfoEntity> result = userInfoDao.findAll();
-        BeanMapping.map(result, resultList, UserInfo.class);
+        BeanMapping.map(result, resultList, UserInfoResponse.class);
         return resultList;
     }
 }
