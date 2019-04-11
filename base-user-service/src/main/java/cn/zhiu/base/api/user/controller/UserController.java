@@ -1,7 +1,8 @@
 package cn.zhiu.base.api.user.controller;
 
 
-import cn.zhiu.base.api.user.dao.UserInfoDao;
+import cn.zhiu.base.api.user.dao.user.UserInfoDao;
+import cn.zhiu.bean.user.entity.enums.user.SexType;
 import cn.zhiu.bean.user.entity.enums.user.UserStatus;
 import cn.zhiu.bean.user.entity.user.UserInfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,15 @@ public class UserController {
     public void init() {
         UserInfoEntity entity = new UserInfoEntity();
         entity.setStatus(UserStatus.DELETE);
-        entity.setUserName("abc");
-        userInfoDao.save(entity);
+        entity.setAccount("abc");
+        entity.setEmail("@@");
+        entity.setNickName("ddd");
+        entity.setPassword("fd");
+        entity.setPhone("fasd");
+        entity.setRealName("fsd");
+        entity.setSex(SexType.Female);
+        entity.setSource("fsd");
+//        userInfoDao.save(entity);
         System.out.println("123123");
     }
 
