@@ -24,7 +24,7 @@ public class UserInfoController implements UserInfoApiService {
     }
 
     @RequestMapping(value = "/detail/{userId}", method = RequestMethod.GET)
-    public UserInfoResponse getUserInfo(String userId) {
+    public UserInfoResponse getUserInfo(@PathVariable("userId") String userId) {
         return userInfoApiService.getUserInfo(userId);
     }
 
