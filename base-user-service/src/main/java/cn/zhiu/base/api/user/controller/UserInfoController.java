@@ -38,7 +38,7 @@ public class UserInfoController implements UserInfoApiService {
         return userInfoApiService.del(userId);
     }
 
-    @Override
+    @RequestMapping(value = "/findone", method = RequestMethod.POST)
     public UserInfo findOne(ApiRequest apiRequest) {
         return userInfoApiService.findOne(apiRequest);
     }
