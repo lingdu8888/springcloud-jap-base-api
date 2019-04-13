@@ -1,6 +1,7 @@
 package cn.zhiu.base.api.cloud.disk.dao.operation;
 
 import cn.zhiu.base.api.cloud.disk.bean.operation.UserOperation;
+import cn.zhiu.bean.cloud.disk.entity.operation.UserOperationEntity;
 import cn.zhiu.framework.bean.core.dao.BaseDao;
 
 /**
@@ -8,6 +9,6 @@ import cn.zhiu.framework.bean.core.dao.BaseDao;
  * @Date: 19-4-11 14:05
  * @Description:
  */
-public interface UserOperationDao extends BaseDao<UserOperation, Long> {
+public interface UserOperationDao extends BaseDao<UserOperationEntity, Long> {
 
 }

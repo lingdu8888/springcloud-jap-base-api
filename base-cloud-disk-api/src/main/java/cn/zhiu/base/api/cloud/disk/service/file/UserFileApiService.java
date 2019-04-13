@@ -18,13 +18,13 @@ import java.util.List;
 public interface UserFileApiService {
 
     @RequestMapping(value = "/file/{id}", method = RequestMethod.GET)
-    UserFile get(@PathVariable("id") String id);
+    UserFile get(@PathVariable("id") Long id);
 
     @RequestMapping(value = "/file", method = RequestMethod.POST)
     UserFile save(@RequestBody UserFile model);
 
     @RequestMapping(value = "/file", method = RequestMethod.DELETE)
-    boolean del(@RequestParam("id") String id);
+    boolean del(@RequestParam("id") Long id);
 
     @RequestMapping(value = "/file/deleteBatch", method = RequestMethod.POST)
     boolean deleteBatch(@RequestBody List<Long> id);
@@ -39,8 +39,11 @@ public interface UserFileApiService {
     List<UserFile> findAll();
 
     @RequestMapping(value = "/file/batch", method = RequestMethod.PUT)
-    void updateBatch(@RequestBody List<UserFile> models);
+    List<UserFile> updateBatch(@RequestBody List<UserFile> models);
 
     @RequestMapping(value = "/file", method = RequestMethod.PUT)
-    UserFile update(@RequestBody UserFile models);
+    UserFile update(@RequestBody UserFile model);
+
+    @RequestMapping(value = "/file/findone", method = RequestMethod.POST)
+    UserFile findOne(@RequestBody ApiRequest apiRequest);
 }

@@ -16,7 +16,7 @@ public class UserDirectory extends AbstractBaseApiBean {
 
     private String userId;
 
-    private String directionName;
+    private String directoryName;
 
     private Long parentId;
 
@@ -40,12 +40,12 @@ public class UserDirectory extends AbstractBaseApiBean {
         this.userId = userId;
     }
 
-    public String getDirectionName() {
-        return directionName;
+    public String getDirectoryName() {
+        return directoryName;
     }
 
-    public void setDirectionName(String directionName) {
-        this.directionName = directionName;
+    public void setDirectoryName(String directoryName) {
+        this.directoryName = directoryName;
     }
 
     public Long getParentId() {

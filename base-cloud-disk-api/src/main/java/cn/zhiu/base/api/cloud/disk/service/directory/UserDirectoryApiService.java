@@ -39,8 +39,11 @@ public interface UserDirectoryApiService {
     List<UserDirectory> findAll();
 
     @RequestMapping(value = "/directory/batch", method = RequestMethod.PUT)
-    void updateBatch(@RequestBody List<UserDirectory> models);
+    List<UserDirectory> updateBatch(@RequestBody List<UserDirectory> models);
 
-    @RequestMapping(value = "/directory/batch", method = RequestMethod.PUT)
-    UserDirectory update(@RequestBody UserDirectory models);
+    @RequestMapping(value = "/directory", method = RequestMethod.PUT)
+    UserDirectory update(@RequestBody UserDirectory model);
+
+    @RequestMapping(value = "/directory/findone", method = RequestMethod.POST)
+    UserDirectory findOne(@RequestBody ApiRequest apiRequest);
 }

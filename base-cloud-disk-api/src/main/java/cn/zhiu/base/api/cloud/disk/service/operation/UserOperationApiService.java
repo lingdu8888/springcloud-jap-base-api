@@ -18,13 +18,13 @@ import java.util.List;
 public interface UserOperationApiService {
 
     @RequestMapping(value = "/operation/{id}", method = RequestMethod.GET)
-    UserOperation get(@PathVariable("id") String id);
+    UserOperation get(@PathVariable("id") Long id);
 
     @RequestMapping(value = "/operation", method = RequestMethod.POST)
     UserOperation save(@RequestBody UserOperation model);
 
     @RequestMapping(value = "/operation", method = RequestMethod.DELETE)
-    boolean del(@RequestParam("id") String id);
+    boolean del(@RequestParam("id") Long id);
 
     @RequestMapping(value = "/operation/list", method = RequestMethod.POST)
     List<UserOperation> findAll(@RequestBody ApiRequest apiRequest);
