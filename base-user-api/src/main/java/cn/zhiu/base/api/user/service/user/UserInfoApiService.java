@@ -2,6 +2,7 @@ package cn.zhiu.base.api.user.service.user;
 
 import cn.zhiu.base.api.user.bean.user.UserInfo;
 import cn.zhiu.base.api.user.bean.user.UserInfoResponse;
+import cn.zhiu.framework.base.api.core.annotation.request.FeignRequestApiProxy;
 import cn.zhiu.framework.base.api.core.request.ApiRequest;
 import cn.zhiu.framework.base.api.core.request.ApiRequestBody;
 import cn.zhiu.framework.base.api.core.response.ApiResponse;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@FeignRequestApiProxy
 @FeignClient(value = "service-user")
 public interface UserInfoApiService extends BaseApiService {
+
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     UserInfo get(@PathVariable("userId") String userId);
