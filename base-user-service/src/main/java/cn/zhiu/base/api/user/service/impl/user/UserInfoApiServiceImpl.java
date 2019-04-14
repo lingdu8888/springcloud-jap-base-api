@@ -26,6 +26,7 @@ public class UserInfoApiServiceImpl extends AbstractBaseApiServiceImpl implement
     @Autowired
     protected UserInfoDao userInfoDao;
 
+
     @Override
     public UserInfo get(String userId) {
         return BeanMapping.map(userInfoDao.getOne(userId), UserInfo.class);

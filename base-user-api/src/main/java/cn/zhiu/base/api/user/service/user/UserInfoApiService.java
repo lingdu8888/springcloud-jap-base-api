@@ -16,6 +16,7 @@ import java.util.List;
 @FeignClient(value = "service-user")
 public interface UserInfoApiService extends BaseApiService {
 
+
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     UserInfo get(@PathVariable("userId") String userId);
 
