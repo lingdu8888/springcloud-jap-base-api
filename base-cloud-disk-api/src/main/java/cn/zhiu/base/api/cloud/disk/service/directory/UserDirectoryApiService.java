@@ -1,6 +1,7 @@
 package cn.zhiu.base.api.cloud.disk.service.directory;
 
 import cn.zhiu.base.api.cloud.disk.bean.directory.UserDirectory;
+import cn.zhiu.framework.base.api.core.annotation.request.FeignRequestApiProxy;
 import cn.zhiu.framework.base.api.core.request.ApiRequest;
 import cn.zhiu.framework.base.api.core.request.ApiRequestBody;
 import cn.zhiu.framework.base.api.core.response.ApiResponse;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Date: 19-4-11 12:13
  * @Description:
  */
+@FeignRequestApiProxy
 @FeignClient(value = "service-cloud-disk")
 public interface UserDirectoryApiService {
 
