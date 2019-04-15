@@ -35,7 +35,7 @@ public class UserInfoApiServiceImpl extends AbstractBaseApiServiceImpl implement
     @Override
     public UserInfoResponse getUserInfo(String userId) {
 
-        return BeanMapping.map(userInfoDao.getOne(userId), UserInfoResponse.class);
+        return BeanMapping.map(userInfoDao.findOne(userId), UserInfoResponse.class);
     }
 
     @Override
